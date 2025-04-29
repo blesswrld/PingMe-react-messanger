@@ -120,9 +120,9 @@ const ProfilePage = () => {
 
                         {/* Avatar Section */}
                         <div className="flex flex-col items-center space-y-2">
-                            <div className="relative">
+                            <div className="relative group">
                                 <div className="avatar">
-                                    <div className="w-32 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                    <div className="w-28 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                                         <img
                                             src={
                                                 selectedImg ||
@@ -136,16 +136,17 @@ const ProfilePage = () => {
                                 </div>
                                 <label
                                     htmlFor="avatar-upload"
-                                    className={`btn btn-primary btn-circle btn-sm absolute bottom-1 right-1 transition-transform duration-200 hover:scale-110 ${
+                                    className={`absolute inset-0 w-full h-full rounded-full bg-black bg-opacity-0 group-hover:bg-opacity-50 flex items-center justify-center transition-opacity duration-300 ${
                                         isUpdatingProfilePic
-                                            ? "animate-pulse cursor-not-allowed"
-                                            : "cursor-pointer"
+                                            ? "bg-opacity-60 cursor-not-allowed"
+                                            : "cursor-pointer opacity-0 group-hover:opacity-100"
                                     }`}
                                 >
                                     {isUpdatingProfilePic ? (
-                                        <span className="loading loading-spinner loading-xs"></span>
+                                        <span className="loading loading-spinner loading-md text-white"></span> // Спиннер
                                     ) : (
-                                        <Camera className="w-4 h-4" />
+                                        // Иконка камеры, видимая при наведении
+                                        <Camera className="w-8 h-8 text-white opacity-90" />
                                     )}
                                 </label>
                                 <input
@@ -157,10 +158,11 @@ const ProfilePage = () => {
                                     disabled={isUpdatingProfilePic}
                                 />
                             </div>
-                            <p className="text-xs text-base-content/60">
+                            <p className="text-xs pt-1 text-base-content/60">
                                 {isUpdatingProfilePic
                                     ? "Uploading image..."
-                                    : "Click the camera icon to update"}
+                                    : "Hover over the photo to update"}{" "}
+                                {/* Изменен текст подсказки */}
                             </p>
                         </div>
 

@@ -78,7 +78,7 @@ export const useAuthStore = create((set, get) => ({
             });
 
             set({ authUser: res.data });
-            toast.success("Profile updated successfully");
+            toast.success("Avatar updated successfully");
         } catch (error) {
             console.log("Error in update profile:", error);
             toast.error(error.response.data.message);
